@@ -10,8 +10,8 @@ services:
       - .:/workspace
       - ~/.ssh:/home/devuser/.ssh
       - ~/.gitconfig:/home/devuser/.gitconfig
-    # ports:
-    #   - 8555:8501
+    ports:
+      - 64333:3000
     working_dir: /workspace
     command: sleep infinity
     stdin_open: true
