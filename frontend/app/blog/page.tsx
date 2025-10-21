@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import clsx from 'clsx';
-import { inter } from '@/app/ui/fonts';
+import { inter } from '../ui/fonts';
 import Image from 'next/image';
 
 
