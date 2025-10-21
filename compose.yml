@@ -1,0 +1,33 @@
+services:
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile.frontend
+      args:
+        UID: ${UID}
+        GID: ${GID}
+    volumes:
+      - .:/workspace
+      - ~/.ssh:/home/devuser/.ssh
+      - ~/.gitconfig:/home/devuser/.gitconfig
+    ports:
+      - 8555:8501
+    working_dir: /workspace
+    command: sleep infinity
+    stdin_open: true
+    tty: true
+  # backend:
+  #   build:
+  #     context: .
+  #     dockerfile: Dockerfile backend
+  #     args:
+  #       UID: ${UID}
+  #       GID: ${GID}
+  #   volumes:
+  #     - .:/workspace
+  #     - ~/.ssh:/home/devuser/.ssh
+  #     - ~/.gitconfig:/home/devuser/.gitconfig
+  #   working_dir: /workspace
+  #   command: sleep infinity
+  #   stdin_open: true
+  #   tty: true
