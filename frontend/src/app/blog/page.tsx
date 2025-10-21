@@ -1,5 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
+import clsx from 'clsx';
+
 
 export default function BlogPage() {
     return (
@@ -16,6 +18,14 @@ export default function BlogPage() {
                         </p>
                     </article>
                 </Link>
+
+                <div className={clsx(
+                    'hover:shadow-lg',
+                    'transition-shadow',
+                    'duration-300',
+                    'md:text-center')}>
+                    ---
+                </div>
 
                 <article className="bg-white hover:bg-gray-100 rounded-lg shadow-md p-6">
                     <h2 className="text-2xl font-semibold mb-2">Second Blog Post</h2>
