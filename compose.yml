@@ -8,7 +8,7 @@ services:
         GID: ${GID}
     volumes:
       - .:/workspace
-      - ~/.ssh:/home/devuser/.ssh
+      # - ~/.ssh:/home/devuser/.ssh
       - ~/.gitconfig:/home/devuser/.gitconfig
     ports:
       - 64333:3000
