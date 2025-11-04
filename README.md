@@ -3,7 +3,7 @@
 Play with Next.js ...
 
 ## Frontend Initialization
-Run on devcontainer ...
+Run on devcontainer ... (in frontend folder)
 ```bash
 npx create-next-app@latest . --disable-git --use-pnpm --empty
 ```

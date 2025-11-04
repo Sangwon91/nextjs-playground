@@ -7,7 +7,10 @@
             "extensions": [
                 "ms-python.python",
                 "bradlc.vscode-tailwindcss",
-                "esbenp.prettier-vscode"
+                "esbenp.prettier-vscode",
+                "bradlc.vscode-tailwindcss",
+                "stivo.tailwind-fold",
+                "biomejs.biome"
             ]
         }
     }
