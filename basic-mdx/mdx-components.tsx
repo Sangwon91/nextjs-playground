@@ -68,40 +68,6 @@ const components = {
   ),
   li: ({ children, ...props }) => <li {...props}>{children}</li>,
 
-  // Typography - Table
-  table: ({ children, ...props }) => (
-    <div className="my-6 w-full overflow-y-auto">
-      <table className="w-full" {...props}>
-        {children}
-      </table>
-    </div>
-  ),
-  thead: ({ children, ...props }) => <thead {...props}>{children}</thead>,
-  tbody: ({ children, ...props }) => <tbody {...props}>{children}</tbody>,
-  tr: ({ children, ...props }) => (
-    <tr className="even:bg-muted m-0 border-t p-0" {...props}>
-      {children}
-    </tr>
-  ),
-  th: ({ children, align, ...props }) => (
-    <th
-      className="border px-4 py-2 text-left font-bold [&[align=center]]:text-center [&[align=right]]:text-right"
-      align={align}
-      {...props}
-    >
-      {children}
-    </th>
-  ),
-  td: ({ children, align, ...props }) => (
-    <td
-      className="border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right"
-      align={align}
-      {...props}
-    >
-      {children}
-    </td>
-  ),
-
   // Typography - Inline Code
   code: ({ children, ...props }) => {
     // Check if it's a code block (pre > code) or inline code
@@ -122,14 +88,6 @@ const components = {
     // For code blocks, return as-is (usually handled by pre)
     return <code {...props}>{children}</code>;
   },
-
-  // img: (props) => (
-  //   <Image
-  //     sizes="100vw"
-  //     style={{ width: '100%', height: 'auto' }}
-  //     {...(props as ImageProps)}
-  //   />
-  // ),
 
   // Typography - Lead (for introductions)
   lead: ({ children, ...props }) => (
