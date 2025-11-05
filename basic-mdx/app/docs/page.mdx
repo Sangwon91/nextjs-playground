@@ -1,0 +1,632 @@
+# MDX 완전 가이드: Next.js에서 MDX 활용하기
+
+> 이 문서는 Next.js 애플리케이션에서 MDX(Markdown + JSX)를 활용하는 방법에 대한 종합적인 가이드입니다. MDX를 통해 마크다운의 간결함과 React 컴포넌트의 강력함을 결합할 수 있습니다.
+
+## 목차
+
+1. [MDX 소개](#mdx-소개)
+2. [기본 마크다운 구문](#기본-마크다운-구문)
+3. [고급 텍스트 포맷팅](#고급-텍스트-포맷팅)
+4. [리스트와 구조화](#리스트와-구조화)
+5. [코드 블록과 인라인 코드](#코드-블록과-인라인-코드)
+6. [테이블 작성하기](#테이블-작성하기)
+7. [이미지와 미디어](#이미지와-미디어)
+8. [JSX 컴포넌트 사용하기](#jsx-컴포넌트-사용하기)
+9. [인터랙티브 요소](#인터랙티브-요소)
+10. [최적화 팁과 모범 사례](#최적화-팁과-모범-사례)
+
+---
+
+## MDX 소개
+
+MDX는 마크다운 파일 내에서 JSX를 사용할 수 있게 해주는 파일 형식입니다. 이를 통해:
+
+- **간결한 작성**: 일반 마크다운처럼 문서를 작성할 수 있습니다
+- **컴포넌트 재사용**: React 컴포넌트를 직접 사용할 수 있습니다
+- **동적 콘텐츠**: JavaScript 표현식을 사용할 수 있습니다
+- **타입 안정성**: TypeScript와 완벽하게 통합됩니다
+
+### MDX의 장점
+
+MDX는 다음과 같은 상황에서 특히 유용합니다:
+
+- 기술 문서 작성
+- 블로그 포스트 작성
+- 교육 자료 개발
+- 컴포넌트 문서화
+
+> **참고**: MDX는 마크다운의 모든 기능을 지원하면서도, React의 풍부한 생태계를 활용할 수 있게 해줍니다.
+
+---
+
+## 기본 마크다운 구문
+
+### 제목 (Headings)
+
+MDX는 6가지 레벨의 제목을 지원합니다:
+
+# H1 제목
+## H2 제목
+### H3 제목
+#### H4 제목
+##### H5 제목
+###### H6 제목
+
+### 단락과 줄바꿈
+
+일반 텍스트는 단락으로 렌더링됩니다. 두 개의 줄바꿈이 필요하거나, 단일 줄바꿈을 원하면 줄 끝에 두 개의 공백을 추가하세요.
+
+이것은 첫 번째 단락입니다.  
+이것은 같은 단락 내의 두 번째 줄입니다.
+
+이것은 새로운 단락입니다.
+
+### 강조와 강조
+
+텍스트를 **굵게** 만들거나 *기울임*으로 표시할 수 있습니다. 또한 ***굵은 기울임***도 가능합니다.
+
+**중요한 정보**는 굵게 표시하고, *부가 설명*은 기울임으로 표시하는 것이 좋습니다.
+
+### 취소선
+
+~~삭제된 내용~~을 표시할 수도 있습니다.
+
+### 인라인 코드
+
+코드 조각을 문서에 포함하려면 백틱으로 감싸세요: `const greeting = "Hello, World!"`
+
+다음과 같은 예시들이 있습니다:
+- `npm install` - 패키지 설치
+- `npm run dev` - 개발 서버 실행
+- `console.log()` - 디버깅 함수
+
+---
+
+## 고급 텍스트 포맷팅
+
+### 인용구
+
+인용구는 문서에서 중요한 정보를 강조하는 데 사용됩니다:
+
+> 프로그래밍은 단지 코드를 작성하는 것이 아니라, 복잡한 문제를 해결하는 예술입니다.
+> 
+> — 존 도우
+
+여러 단락의 인용구도 가능합니다:
+
+> 이것은 첫 번째 인용 단락입니다.
+> 
+> 이것은 두 번째 인용 단락으로, 같은 인용구의 일부입니다.
+
+### 수평선
+
+문서를 구분하기 위해 수평선을 사용할 수 있습니다:
+
+---
+
+### 이스케이프 문자
+
+마크다운 특수 문자를 일반 텍스트로 표시하려면 백슬래시로 이스케이프하세요:
+
+\*별표\*, \`백틱\`, \#해시태그
+
+---
+
+## 리스트와 구조화
+
+### 순서 없는 리스트
+
+순서 없는 리스트는 다음과 같이 작성합니다:
+
+- 첫 번째 항목
+- 두 번째 항목
+- 세 번째 항목
+
+다른 스타일도 사용 가능합니다:
+
+* 별표 스타일
+* 항목 1
+* 항목 2
+
+### 순서 있는 리스트
+
+번호가 있는 리스트는 다음과 같습니다:
+
+1. 첫 번째 단계
+2. 두 번째 단계
+3. 세 번째 단계
+
+### 중첩 리스트
+
+리스트를 중첩할 수 있습니다:
+
+1. 메인 항목
+   - 하위 항목 1
+   - 하위 항목 2
+     - 더 깊은 하위 항목
+2. 두 번째 메인 항목
+   - 하위 항목 A
+   - 하위 항목 B
+
+### 작업 리스트 (체크박스)
+
+- [x] 완료된 작업
+- [ ] 미완료 작업
+- [ ] 또 다른 작업
+
+### 리스트와 단락
+
+리스트 항목 내에 여러 단락을 포함할 수 있습니다:
+
+- 첫 번째 항목
+  
+  이 항목에 대한 추가 설명이 여기에 들어갑니다.
+  
+  또 다른 단락도 가능합니다.
+
+- 두 번째 항목
+
+---
+
+## 코드 블록과 인라인 코드
+
+### 인라인 코드
+
+인라인 코드는 `single backticks`로 감싸면 됩니다.
+
+예를 들어, `useState` 훅을 사용하거나 `Array.map()` 메서드를 호출할 수 있습니다.
+
+### 코드 블록
+
+여러 줄의 코드는 세 개의 백틱으로 감싸고 언어를 지정할 수 있습니다.
+
+#### JavaScript 예제
+
+```javascript
+// useState 훅 사용 예제
+import { useState } from 'react';
+
+function Counter() {
+  const [count, setCount] = useState(0);
+  
+  return (
+    <div>
+      <p>현재 카운트: {count}</p>
+      <button onClick={() => setCount(count + 1)}>
+        증가
+      </button>
+    </div>
+  );
+}
+```
+
+#### TypeScript 예제
+
+```typescript
+// 타입 안전성을 갖춘 인터페이스 정의
+interface User {
+  id: number;
+  name: string;
+  email: string;
+  isActive: boolean;
+}
+
+function createUser(userData: Partial<User>): User {
+  return {
+    id: Date.now(),
+    name: userData.name || '익명',
+    email: userData.email || '',
+    isActive: userData.isActive ?? true,
+  };
+}
+```
+
+#### Python 예제
+
+```python
+# 리스트 컴프리헨션 예제
+numbers = [1, 2, 3, 4, 5]
+squared = [x ** 2 for x in numbers]
+
+# 딕셔너리 컴프리헨션
+squared_dict = {x: x**2 for x in range(1, 6)}
+
+print(squared)  # [1, 4, 9, 16, 25]
+```
+
+#### CSS 예제
+
+```css
+/* 반응형 디자인을 위한 미디어 쿼리 */
+.container {
+  width: 100%;
+  padding: 20px;
+}
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 750px;
+    margin: 0 auto;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    max-width: 1200px;
+  }
+}
+```
+
+#### Shell/Bash 예제
+
+```bash
+#!/bin/bash
+# 빌드 스크립트 예제
+
+echo "빌드 시작..."
+npm run build
+
+if [ $? -eq 0 ]; then
+  echo "빌드 성공!"
+  npm run deploy
+else
+  echo "빌드 실패!"
+  exit 1
+fi
+```
+
+#### JSON 예제
+
+```json
+{
+  "name": "nextjs-playground",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "react": "^18.0.0",
+    "next": "^14.0.0"
+  }
+}
+```
+
+### 코드 블록 하이라이팅
+
+코드 블록은 자동으로 구문 강조(syntax highlighting)를 지원합니다. 위의 예제들을 확인해보세요!
+
+---
+
+## 테이블 작성하기
+
+### 기본 테이블
+
+테이블은 데이터를 구조화하여 표시하는 데 유용합니다:
+
+| 기능 | 설명 | 상태 |
+|------|------|------|
+| 마크다운 지원 | 기본 마크다운 문법 | ✅ 완료 |
+| JSX 컴포넌트 | React 컴포넌트 사용 | ✅ 완료 |
+| 코드 하이라이팅 | 구문 강조 기능 | ✅ 완료 |
+| 테이블 | 데이터 표시 | ✅ 완료 |
+
+### 정렬된 테이블
+
+컬럼을 정렬할 수 있습니다:
+
+| 왼쪽 정렬 | 중앙 정렬 | 오른쪽 정렬 |
+|:----------|:---------:|------------:|
+| 왼쪽 | 중앙 | 오른쪽 |
+| 텍스트 | 데이터 | 숫자 |
+| 내용 | 내용 | 123 |
+
+### 복잡한 테이블
+
+더 복잡한 데이터도 표시할 수 있습니다:
+
+| 프레임워크 | 버전 | 언어 | 특징 |
+|-----------|------|------|------|
+| React | 18.x | JavaScript/TypeScript | 컴포넌트 기반, 가상 DOM |
+| Vue | 3.x | JavaScript/TypeScript | 반응형 시스템, 컴포지션 API |
+| Angular | 17.x | TypeScript | 종합 프레임워크, 의존성 주입 |
+| Svelte | 4.x | JavaScript/TypeScript | 컴파일 타임 최적화 |
+
+### 성능 비교 테이블
+
+| 작업 | 시간 | 메모리 사용량 |
+|------|------|--------------|
+| 초기 렌더링 | 120ms | 45MB |
+| 리렌더링 | 15ms | 48MB |
+| 빌드 시간 | 2.3s | 250MB |
+
+---
+
+## 이미지와 미디어
+
+### 이미지 삽입
+
+이미지는 다음과 같이 삽입할 수 있습니다:
+
+![대체 텍스트](https://via.placeholder.com/800x400/4F46E5/FFFFFF?text=MDX+Example+Image)
+
+### 링크된 이미지
+
+이미지에 링크를 추가할 수도 있습니다:
+
+[![Next.js 로고](https://via.placeholder.com/400x200/000000/FFFFFF?text=Next.js)](https://nextjs.org)
+
+### 링크
+
+텍스트 링크는 다음과 같이 작성합니다:
+
+[Next.js 공식 문서](https://nextjs.org/docs)를 확인하세요.
+
+[MDX 공식 사이트](https://mdxjs.com)에서 더 많은 정보를 얻을 수 있습니다.
+
+자동 링크도 지원됩니다: https://github.com
+
+이메일 링크: example@email.com
+
+---
+
+## JSX 컴포넌트 사용하기
+
+MDX의 가장 강력한 기능 중 하나는 React 컴포넌트를 직접 사용할 수 있다는 것입니다.
+
+### Button 컴포넌트 사용
+
+import { Button } from '@/components/ui/button';
+
+<div className="flex gap-4 p-3 justify-center">
+<Button>기본 버튼</Button>
+
+<Button variant="secondary">보조 버튼</Button>
+
+<Button variant="destructive">삭제 버튼</Button>
+
+<Button variant="outline">아웃라인 버튼</Button>
+
+<Button variant="ghost">고스트 버튼</Button>
+
+<Button variant="link">링크 스타일</Button>
+</div>
+### Card 컴포넌트 사용
+
+import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from '@/components/ui/card';
+
+<Card>
+  <CardHeader>
+    <CardTitle>카드 제목</CardTitle>
+    <CardDescription>카드에 대한 설명이 여기에 표시됩니다.</CardDescription>
+  </CardHeader>
+  <CardContent>
+    <p>카드의 메인 콘텐츠 영역입니다. 여기에 주요 정보를 표시할 수 있습니다.</p>
+  </CardContent>
+  <CardFooter>
+    <Button variant="outline">액션</Button>
+  </CardFooter>
+</Card>
+
+### 여러 카드 예제
+
+<Card>
+  <CardHeader>
+    <CardTitle>기능 1</CardTitle>
+    <CardDescription>마크다운 지원</CardDescription>
+  </CardHeader>
+  <CardContent>
+    표준 마크다운 문법을 완전히 지원합니다.
+  </CardContent>
+</Card>
+
+<Card>
+  <CardHeader>
+    <CardTitle>기능 2</CardTitle>
+    <CardDescription>JSX 컴포넌트</CardDescription>
+  </CardHeader>
+  <CardContent>
+    React 컴포넌트를 직접 사용할 수 있습니다.
+  </CardContent>
+</Card>
+
+<Card>
+  <CardHeader>
+    <CardTitle>기능 3</CardTitle>
+    <CardDescription>타입 안정성</CardDescription>
+  </CardHeader>
+  <CardContent>
+    TypeScript와 완벽하게 통합됩니다.
+  </CardContent>
+</Card>
+
+### 인라인 스타일
+
+JSX를 사용하여 인라인 스타일을 적용할 수 있습니다:
+
+<div style={{ padding: '20px', backgroundColor: '#f0f0f0', borderRadius: '8px' }}>
+  <p style={{ color: '#333', fontSize: '18px' }}>
+    이것은 인라인 스타일이 적용된 컨테이너입니다.
+  </p>
+</div>
+
+### 조건부 렌더링
+
+JavaScript 표현식도 사용할 수 있습니다:
+
+<div>
+  {(() => {
+    const items = ['항목 1', '항목 2', '항목 3'];
+    return (
+      <ul>
+        {items.map((item, index) => (
+          <li key={index}>{item}</li>
+        ))}
+      </ul>
+    );
+  })()}
+</div>
+
+---
+
+## 인터랙티브 요소
+
+### 알림 박스 스타일
+
+<div style={{ 
+  padding: '16px', 
+  backgroundColor: '#e3f2fd', 
+  borderLeft: '4px solid #2196f3',
+  borderRadius: '4px',
+  margin: '16px 0'
+}}>
+  <strong>💡 정보:</strong> 이것은 정보성 알림 박스입니다.
+</div>
+
+<div style={{ 
+  padding: '16px', 
+  backgroundColor: '#fff3cd', 
+  borderLeft: '4px solid #ffc107',
+  borderRadius: '4px',
+  margin: '16px 0'
+}}>
+  <strong>⚠️ 경고:</strong> 이것은 경고 메시지입니다.
+</div>
+
+<div style={{ 
+  padding: '16px', 
+  backgroundColor: '#f8d7da', 
+  borderLeft: '4px solid #dc3545',
+  borderRadius: '4px',
+  margin: '16px 0'
+}}>
+  <strong>❌ 오류:</strong> 이것은 오류 메시지입니다.
+</div>
+
+<div style={{ 
+  padding: '16px', 
+  backgroundColor: '#d4edda', 
+  borderLeft: '4px solid #28a745',
+  borderRadius: '4px',
+  margin: '16px 0'
+}}>
+  <strong>✅ 성공:</strong> 작업이 성공적으로 완료되었습니다.
+</div>
+
+---
+
+## 최적화 팁과 모범 사례
+
+### 1. 컴포넌트 재사용
+
+공통 컴포넌트를 만들어 재사용하면 유지보수가 쉬워집니다:
+
+```typescript
+// components/Alert.tsx
+export function Alert({ type, children }) {
+  const styles = {
+    info: { bg: '#e3f2fd', border: '#2196f3' },
+    warning: { bg: '#fff3cd', border: '#ffc107' },
+    // ...
+  };
+  
+  return (
+    <div style={{ 
+      padding: '16px',
+      backgroundColor: styles[type].bg,
+      borderLeft: `4px solid ${styles[type].border}`
+    }}>
+      {children}
+    </div>
+  );
+}
+```
+
+### 2. 이미지 최적화
+
+Next.js의 Image 컴포넌트를 사용하여 이미지를 최적화하세요:
+
+```jsx
+import Image from 'next/image';
+
+<Image
+  src="/path/to/image.jpg"
+  alt="설명"
+  width={800}
+  height={400}
+/>
+```
+
+### 3. 코드 블록 일관성
+
+코드 블록에는 항상 언어를 지정하여 구문 강조를 활성화하세요:
+
+```javascript
+// 좋은 예
+const code = "언어 지정됨";
+```
+
+```
+// 나쁜 예 - 언어 미지정
+const code = "언어 지정 안됨";
+```
+
+### 4. 접근성 고려
+
+- 모든 이미지에 대체 텍스트 추가
+- 링크에 명확한 설명 제공
+- 테이블에 적절한 헤더 사용
+- 색상만으로 정보를 전달하지 않기
+
+### 5. 성능 최적화
+
+- 큰 컴포넌트는 동적 import 사용
+- 이미지는 lazy loading 적용
+- 불필요한 리렌더링 방지
+
+### 6. 문서 구조화
+
+문서를 논리적으로 구성하고 다음을 포함하세요:
+
+- 명확한 제목 계층 구조
+- 목차 (Table of Contents)
+- 섹션 구분
+- 관련 링크
+
+---
+
+## 추가 리소스
+
+### 학습 자료
+
+- [MDX 공식 문서](https://mdxjs.com)
+- [Next.js MDX 문서](https://nextjs.org/docs/app/building-your-application/configuring/mdx)
+- [마크다운 가이드](https://www.markdownguide.org)
+
+### 도구
+
+- MDX 플레이그라운드
+- VS Code MDX 확장
+- MDX 린터
+
+### 커뮤니티
+
+- MDX GitHub 저장소
+- Next.js Discord
+- Stack Overflow
+
+---
+
+## 결론
+
+MDX는 마크다운의 간결함과 React의 강력함을 결합한 훌륭한 도구입니다. 이 가이드를 통해 다양한 구문을 사용하여 풍부하고 인터랙티브한 문서를 작성할 수 있습니다.
+
+### 다음 단계
+
+1. 프로젝트에 MDX 설정하기
+2. 커스텀 컴포넌트 만들기
+3. 문서 작성 시작하기
+4. 팀과 공유하기
+
+> **팁**: 실습을 통해 MDX를 익히는 것이 가장 좋습니다. 작은 프로젝트부터 시작하여 점진적으로 복잡한 문서를 작성해보세요.
