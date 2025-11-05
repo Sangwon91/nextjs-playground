@@ -10,7 +10,6 @@ import {
 } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import NavigationMenuDemo from "@/components/navigation";
 
 function CardDemo() {
   return (
@@ -65,12 +64,9 @@ function CardDemo() {
 
 export default function Home() {
   return (
-    <div className="p-2">
-      <NavigationMenuDemo />
-      <div className="flex min-h-screen items-center justify-center p-24">
-        
-        <CardDemo />
-      </div>
+    <div className="flex min-h-screen items-center justify-center p-24">
+      
+      <CardDemo />
     </div>
   )
 }

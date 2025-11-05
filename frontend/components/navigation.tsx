@@ -55,7 +55,7 @@ const components: { title: string; href: string; description: string }[] = [
 
 export default function NavigationMenuDemo() {
 //   const isMobile = useIsMobile()
-  const isMobile = false
+  const isMobile = false;
 
   return (
     <NavigationMenu viewport={isMobile}>

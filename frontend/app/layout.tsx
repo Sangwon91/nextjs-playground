@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import NavigationMenuDemo from "@/components/navigation";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -13,7 +14,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <header className="border-b">
+          <div className="container ml-4 py-4">
+            <NavigationMenuDemo />
+          </div>
+        </header>
+        <main>{children}</main>
+      </body>
     </html>
   );
 }
