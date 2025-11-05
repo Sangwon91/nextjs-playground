@@ -68,26 +68,26 @@ const components = {
   ),
   li: ({ children, ...props }) => <li {...props}>{children}</li>,
 
-  // Typography - Inline Code
-  code: ({ children, ...props }) => {
-    // Check if it's a code block (pre > code) or inline code
-    const isInline =
-      props.className === undefined || !props.className.includes("language-");
+  // // Typography - Inline Code
+  // code: ({ children, ...props }) => {
+  //   // Check if it's a code block (pre > code) or inline code
+  //   const isInline =
+  //     props.className === undefined || !props.className.includes("language-");
 
-    if (isInline) {
-      return (
-        <code
-          className="bg-muted relative rounded px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold"
-          {...props}
-        >
-          {children}
-        </code>
-      );
-    }
+  //   if (isInline) {
+  //     return (
+  //       <code
+  //         className="bg-muted relative rounded px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold"
+  //         {...props}
+  //       >
+  //         {children}
+  //       </code>
+  //     );
+  //   }
 
-    // For code blocks, return as-is (usually handled by pre)
-    return <code {...props}>{children}</code>;
-  },
+  //   // For code blocks, return as-is (usually handled by pre)
+  //   return <code {...props}>{children}</code>;
+  // },
 
   // Typography - Lead (for introductions)
   lead: ({ children, ...props }) => (
