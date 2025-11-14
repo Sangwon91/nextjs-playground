@@ -1,6 +1,7 @@
-import remarkGfm from 'remark-gfm'
-import remarkMath from 'remark-math';
-import rehypeKatex from 'rehype-katex';
+import remarkGfm from "remark-gfm";
+import remarkMath from "remark-math";
+import rehypeKatex from "rehype-katex";
+import rehypePrettyCode from "rehype-pretty-code";
 import createMDX from "@next/mdx";
 import type { NextConfig } from "next";
 
@@ -14,7 +15,15 @@ const withMDX = createMDX({
   // Add markdown plugins here, as desired
   options: {
     remarkPlugins: [remarkGfm, remarkMath],
-    rehypePlugins: [rehypeKatex],
+    rehypePlugins: [
+      rehypeKatex,
+      [
+        rehypePrettyCode,
+        {
+          theme: "github-light",
+        },
+      ],
+    ],
   },
 });
 
